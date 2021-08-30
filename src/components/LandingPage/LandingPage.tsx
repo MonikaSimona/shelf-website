@@ -16,7 +16,7 @@ const LandingPage = (props: Props) => {
     };
   }, []);
   return (
-    <div className="landingPageBackground">
+    <div className="container">
       <div
         className={`introWrapper ${
           showIntro ? "introWrapperOn" : "introWrapperOff"
@@ -32,7 +32,7 @@ const LandingPage = (props: Props) => {
             <Icon className="smileIcon" icon="la:smile-beam" color="#ffffff" />{" "}
           </p>
         </div>
-        <NavLink to="/login">
+        <NavLink to="/auth">
           <Icon
             className="arrowIcon"
             icon="bi:arrow-down"

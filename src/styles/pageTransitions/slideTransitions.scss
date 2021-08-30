@@ -1,0 +1,19 @@
+.pageSlider-exit > .page {
+  z-index: 1;
+}
+.pageSlider-enter > .page {
+  z-index: 10;
+}
+.pageSlider-enter.up > .page {
+  transform: translate3d(0, 100%, 0);
+}
+.pageSlider-enter.down > .page {
+  transform: translate3d(0, -100%, 0);
+}
+.pageSlider-exit.down > .page {
+  transform: translate3d(0, -100%, 0);
+}
+.pageSlider-enter.pageSlider-enter-active > .page {
+  transform: translate3d(0, 0, 0);
+  transition: all 800ms ease-in-out;
+}

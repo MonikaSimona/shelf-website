@@ -1,0 +1,12 @@
+.footer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: $primary;
+  font-family: "Nunito-400";
+  font-size: 18px;
+  position: absolute;
+
+  bottom: 26px;
+}

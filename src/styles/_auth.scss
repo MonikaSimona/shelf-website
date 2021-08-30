@@ -1,0 +1,49 @@
+.authWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+  font-family: "Nunito-400";
+
+  .logo {
+    padding: 30px 100px;
+    font-size: 50px;
+    color: $primary;
+  }
+  .authBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.78);
+    max-height: auto;
+    min-width: 455px;
+    padding: 27px 45px;
+    border-radius: 69px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    transition: 0.3s;
+    .title {
+      color: $tvshows-accent;
+      font-size: 30px;
+      margin-bottom: 25px;
+    }
+    .authButton {
+      background-color: $movies-accent;
+      border: none;
+      border-radius: 10px;
+      padding: 6px 0;
+      width: 40%;
+      font-size: 19px;
+      color: $primary;
+      margin: 20px 0;
+    }
+    .authInfo {
+      cursor: pointer;
+      font-size: 16px;
+      color: $tvshows-accent;
+    }
+  }
+}
