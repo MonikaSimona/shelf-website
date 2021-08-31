@@ -12,8 +12,12 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { useEffect } from "react";
 import "./styles/pageTransitions/slideTransitions.scss";
 import Register from "./components/RegisterComponent/RegisterComponent";
-import BooksHome from "./components/BooksHome/BooksHome";
 import Auth from "./components/Authenticate/Authenticate";
+import Home from "./components/Home/Home";
+import AllBooks from "./components/Home/Collections/AllBooks";
+import AllMovies from "./components/Home/Collections/AllMovies";
+import AllTvshows from "./components/Home/Collections/AllTvshows";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   const timeout = { enter: 800, exit: 400 };
@@ -52,10 +56,15 @@ function App() {
               : ""
           }`}
         >
+          {currentKey === "home" && <Navbar />}
+
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route path="/auth" component={Auth} />
-            <Route path="/books" component={BooksHome} />
+            <Route exact path="/home" component={Home} />
+            <Route path="/home/books" component={AllBooks} />
+            <Route path="/home/movies" component={AllMovies} />
+            <Route path="/home/tvshows" component={AllTvshows} />
           </Switch>
         </div>
       </CSSTransition>

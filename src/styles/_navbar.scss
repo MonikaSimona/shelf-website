@@ -1,0 +1,103 @@
+.navbarWrapper {
+  display: flex;
+  width: 100%;
+  .sideBar {
+    font-family: "Nunito-400";
+    height: 100vh;
+    width: 15%;
+    box-shadow: 3px 0px 4px 0px #00000017;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    .navigationsTabs {
+      width: 100%;
+      list-style-type: none;
+      .logo {
+        height: 70px;
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid $secondary;
+      }
+
+      .books {
+        color: $books-accent;
+      }
+      .activeBooks {
+        border-right: 7px solid $books-accent;
+      }
+      .movies {
+        color: $movies-accent;
+      }
+      .activeMovies {
+        border-right: 7px solid $movies-accent;
+      }
+      .tvshows {
+        color: $tvshows-accent;
+      }
+      .activeTvshows {
+        border-right: 7px solid $tvshows-accent;
+      }
+
+      .sidebarItem {
+        text-decoration: none;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 5px;
+        font-size: 20px;
+        border-bottom: 1px solid $secondary;
+        padding-left: 50px;
+      }
+    }
+    .navigationsButtons {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 150px;
+      margin-bottom: 66px;
+      list-style-type: none;
+      .buttonsItem {
+        text-decoration: none;
+        color: $dark;
+      }
+      .iconButton {
+        width: 50px;
+      }
+    }
+  }
+  .navColorBooks {
+    background-color: $books-accent;
+  }
+  .navColorMovies {
+    background-color: $movies-accent;
+  }
+  .navColorTvshows {
+    background-color: $tvshows-accent;
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    width: 85%;
+    height: 70px;
+    border-bottom: 1px solid $secondary;
+    .navItem {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      width: 100px;
+      gap: 10px;
+      font-family: "Nunito-400";
+      color: $primary;
+      margin: 0 50px;
+      //   .infoIcon {
+      //     color: $primary;
+      //   }
+    }
+  }
+}

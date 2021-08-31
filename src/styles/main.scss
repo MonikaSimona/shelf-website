@@ -1,10 +1,17 @@
-@import "./colors";
-@import "./fonts";
+@import "./utils/colors";
+@import ".//utils/fonts";
 
 @import "./landingpage";
 @import "./auth";
 @import "./footer";
+@import "./navbar";
 @import "./form";
+@import "./home";
+@import "./books";
+@import "./movies";
+@import "./tvshows";
+@import "./colletionItemCard";
+
 *,
 *::after,
 *::before {
