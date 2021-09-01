@@ -1,0 +1,61 @@
+.search {
+  display: flex;
+  font-family: "Nunito-400";
+  position: absolute;
+  right: 5%;
+  top: 100px;
+  width: 16%;
+  .searchForm {
+    display: flex;
+    flex-direction: column;
+    .optionPicker {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      .label {
+        font-size: 20px;
+        width: 40%;
+      }
+      .picker {
+        outline: none;
+        height: fit-content;
+        width: 40%;
+        position: relative;
+        option {
+          color: $secondary;
+        }
+      }
+    }
+    .searchField {
+      border: 2px solid black;
+      border-radius: 5px;
+      width: 100%;
+      padding: 5px 20px;
+      &:focus {
+        outline: none;
+      }
+      &::placeholder {
+        color: $secondary;
+      }
+    }
+    .submitButton {
+      border: none;
+      border-radius: 100%;
+      width: 30px;
+      height: 30px;
+      color: $primary;
+      margin: 10px auto;
+      cursor: pointer;
+      box-shadow: 2px 2px 4px 0px #0000001a;
+    }
+    .submitBooks {
+      background-color: $books-accent;
+    }
+    .submitMovies {
+      background-color: $movies-accent;
+    }
+    .submitTvshows {
+      background-color: $tvshows-accent;
+    }
+  }
+}

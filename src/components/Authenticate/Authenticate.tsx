@@ -30,7 +30,7 @@ const Auth = (props: Props) => {
         <h3 className="title">Welcome to Shelf.</h3>
         {isLoginScreen ? <Login /> : <Register />}
 
-        <NavLink to="/home" className="button">
+        <NavLink to="/home/books" className="button">
           <button className="authButton">
             {isLoginScreen ? "login" : "register"}
           </button>
@@ -44,7 +44,7 @@ const Auth = (props: Props) => {
             : "Already have an account? Go to login "}
         </p>
       </div>
-      <Footer />
+      <Footer dark={false} />
     </div>
   );
 };

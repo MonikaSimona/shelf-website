@@ -2,7 +2,8 @@ import { Icon } from "@iconify/react";
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-interface Props {
+export interface CardData {
+  type?: string;
   imageSrc?: string;
   title: string;
   subtitle: string;
@@ -11,10 +12,19 @@ interface Props {
   date: string;
 }
 
-const CollectionItemCard = (props: Props) => {
-  const { imageSrc, title, subtitle, review, reviewer, date } = props;
+const CollectionItemCard = (props: CardData) => {
+  const { type, imageSrc, title, subtitle, review, reviewer, date } = props;
   return (
-    <div className="cardWrapper">
+    <div
+      className={`card ${
+        type === "book"
+          ? "booksColor"
+          : type === "tvshow"
+          ? "tvshowsColor"
+          : "moviesColor"
+      } `}
+    >
+      <div className="leftDecoration"></div>
       <div className="img">
         <img src={imageSrc} alt="" />
       </div>
@@ -28,7 +38,7 @@ const CollectionItemCard = (props: Props) => {
           <div className="reviewer">
             Review by <span>@{reviewer}</span>
           </div>
-          <div className="date">
+          <div className="  date">
             {" "}
             <Icon icon="clarity:date-solid" />
             {date}
