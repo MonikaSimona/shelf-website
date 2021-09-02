@@ -1,14 +1,19 @@
-import { Field, Form, Formik, yupToFormErrors } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import * as yup from "yup";
+import {
+  filterBooks,
+  getAllBooks,
+} from "../../store/slices/booksSlice/booksSlice";
 import { CardData } from "../Home/CollectionItemCard";
 
 interface Props {
   data?: CardData[];
 }
-interface SearchValues {
+export interface SearchValues {
   searchTerm: string;
   option: string;
 }
@@ -21,20 +26,21 @@ const Search = ({ data }: Props) => {
   const location = useLocation();
   const currentKey = location.pathname.split("/")[2] || "/";
   const selectOptions = [
+    "title",
     `${currentKey === "books" ? "author" : "studio"}`,
     "reviewer",
-    "title",
   ];
 
-  const [search, setSearch] = useState({ searchTerm: "", option: "" });
+  const dispatch = useDispatch();
 
   useEffect(() => {
     console.log(data);
     console.log(selectOptions);
+    dispatch(getAllBooks({}));
   }, [location]);
 
   const searchSchema = yup.object({
-    searchTerm: yup.string(),
+    searchTerm: yup.string().required("You must insert search term."),
     option: yup.string().oneOf(selectOptions),
   });
 
@@ -44,11 +50,12 @@ const Search = ({ data }: Props) => {
         initialValues={searchInitialValues}
         validationSchema={searchSchema}
         onSubmit={(values) => {
-          setSearch({
+          const search = {
             searchTerm: values.searchTerm,
-            option: values.option,
-          });
-          console.log(search);
+            option: values.option || "title",
+          };
+          console.log("search component", search);
+          dispatch(filterBooks(search));
         }}
       >
         {({ values }) => (
@@ -62,14 +69,17 @@ const Search = ({ data }: Props) => {
               </Field>
             </div>
             <Field
-              //   onChange={() => {
-              //     setSearchTerm(values.searchTerm);
-              //   }}
               className="searchField"
               name="searchTerm"
               placeholder="insert search term"
               value={values.searchTerm}
             />
+            <div className="errorWrapper">
+              <ErrorMessage
+                name="searchTerm"
+                render={(err) => <p className="errorMessage">{err}</p>}
+              />
+            </div>
             <button
               type="submit"
               className={`submitButton ${

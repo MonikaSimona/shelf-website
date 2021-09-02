@@ -18,7 +18,7 @@ const AllBooks = (props: Props) => {
               type={review.type}
               imageSrc={review.imageSrc}
               title={review.title}
-              subtitle={review.title}
+              subtitle={review.subtitle}
               review={review.review}
               reviewer={review.reviewer}
               date={review.date}

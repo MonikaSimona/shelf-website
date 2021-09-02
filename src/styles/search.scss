@@ -38,6 +38,15 @@
         color: $secondary;
       }
     }
+    .errorWrapper {
+      height: 15px;
+      margin-bottom: 2px;
+      .errorMessage {
+        font-size: 13px;
+        color: $movies-accent;
+        margin-left: 5px;
+      }
+    }
     .submitButton {
       border: none;
       border-radius: 100%;
