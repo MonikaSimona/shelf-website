@@ -1,6 +1,6 @@
-import { Icon } from "@iconify/react";
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Icon } from "@iconify/react";
 
 export interface CardData {
   type?: string;
@@ -17,9 +17,9 @@ const CollectionItemCard = (props: CardData) => {
   return (
     <div
       className={`card ${
-        type === "book"
+        type === "books"
           ? "booksColor"
-          : type === "tvshow"
+          : type === "tvshows"
           ? "tvshowsColor"
           : "moviesColor"
       } `}

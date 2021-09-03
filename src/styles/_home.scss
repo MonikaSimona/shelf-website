@@ -8,6 +8,9 @@
   top: 100px;
   bottom: 100px;
   left: 20%;
-  // padding-left: 50px;
   overflow-y: scroll;
+}
+.noItems {
+  font-family: "Nunuito-400";
+  overflow-y: unset;
 }

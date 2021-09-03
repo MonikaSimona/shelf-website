@@ -1,15 +1,13 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import authSlice from "./slices/authSlice/authSlice";
-import booksSlice from "./slices/booksSlice/booksSlice";
-import moviesSlice from "./slices/moviesSlice/moviesSlice";
-import tvshowsSlice from "./slices/tvshowsSlice/tvshowsSlice";
+import helperSlice from "./slices/helperSlice/helperSlice";
+import reviewItemsSlice from "./slices/reviewItemsSlice/reviewItemsSlice";
 
 export const store = configureStore({
   reducer: {
     auth: authSlice,
-    books: booksSlice,
-    movies: moviesSlice,
-    tvshows: tvshowsSlice,
+    reviewItems: reviewItemsSlice,
+    helperSlice: helperSlice,
   },
 });
 

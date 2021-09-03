@@ -17,7 +17,7 @@ const Navbar = (props: Props) => {
           <li className="logo">Shelf.</li>
           <li>
             <NavLink
-              to="/home/books"
+              to="/collection/books"
               className={`sidebarItem books ${
                 currentKey === "books" && "activeBooks"
               } `}
@@ -28,7 +28,7 @@ const Navbar = (props: Props) => {
           </li>
           <li>
             <NavLink
-              to="/home/movies"
+              to="/collection/movies"
               className={`sidebarItem movies ${
                 currentKey === "movies" && "activeMovies"
               }`}
@@ -39,7 +39,7 @@ const Navbar = (props: Props) => {
           </li>
           <li>
             <NavLink
-              to="/home/tvshows"
+              to="/collection/tvshows"
               className={`sidebarItem tvshows ${
                 currentKey === "tvshows" && "activeTvshows"
               }`}

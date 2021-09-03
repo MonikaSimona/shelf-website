@@ -1,14 +1,23 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
-import * as yup from "yup";
 import {
-  filterBooks,
-  getAllBooks,
-} from "../../store/slices/booksSlice/booksSlice";
+  ErrorMessage,
+  Field,
+  Form,
+  Formik,
+  FormikFormProps,
+  FormikProps,
+} from "formik";
+import React, { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import * as yup from "yup";
+import { setNoSuchTerm } from "../../store/slices/helperSlice/helperSlice";
+import {
+  filterItems,
+  getAllItems,
+} from "../../store/slices/reviewItemsSlice/reviewItemsSlice";
+
 import { CardData } from "../Home/CollectionItemCard";
+import { Params } from "../Home/Collections/Collection";
 
 interface Props {
   data?: CardData[];
@@ -16,28 +25,37 @@ interface Props {
 export interface SearchValues {
   searchTerm: string;
   option: string;
+  type: string;
 }
 const searchInitialValues: SearchValues = {
   searchTerm: "",
   option: "",
+  type: "",
 };
 
-const Search = ({ data }: Props) => {
-  const location = useLocation();
-  const currentKey = location.pathname.split("/")[2] || "/";
+const Search = () => {
+  const params: Params = useParams();
+  const type = params.type;
+  const data = useSelector((state: any) => state.reviewItems);
+  const [check, setCheck] = useState(false);
   const selectOptions = [
     "title",
-    `${currentKey === "books" ? "author" : "studio"}`,
+    `${type === "books" ? "author" : "studio"}`,
     "reviewer",
   ];
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(data);
-    console.log(selectOptions);
-    dispatch(getAllBooks({}));
-  }, [location]);
+    dispatch(getAllItems({ type }));
+  }, [params]);
+  useEffect(() => {
+    if (data.length === 0) {
+      dispatch(setNoSuchTerm(true));
+    } else {
+      dispatch(setNoSuchTerm(false));
+    }
+  }, [check]);
 
   const searchSchema = yup.object({
     searchTerm: yup.string().required("You must insert search term."),
@@ -49,13 +67,16 @@ const Search = ({ data }: Props) => {
       <Formik
         initialValues={searchInitialValues}
         validationSchema={searchSchema}
-        onSubmit={(values) => {
+        onSubmit={(values, { resetForm }) => {
           const search = {
             searchTerm: values.searchTerm,
             option: values.option || "title",
+            type,
           };
           console.log("search component", search);
-          dispatch(filterBooks(search));
+          dispatch(filterItems(search));
+          setCheck(!check);
+          resetForm({ values: { searchTerm: "", option: "", type: "" } });
         }}
       >
         {({ values }) => (
@@ -83,9 +104,9 @@ const Search = ({ data }: Props) => {
             <button
               type="submit"
               className={`submitButton ${
-                currentKey === "books"
+                type === "books"
                   ? "submitBooks"
-                  : currentKey === "movies"
+                  : type === "movies"
                   ? "submitMovies"
                   : "submitTvshows"
               }`}

@@ -30,7 +30,7 @@ const Auth = (props: Props) => {
         <h3 className="title">Welcome to Shelf.</h3>
         {isLoginScreen ? <Login /> : <Register />}
 
-        <NavLink to="/home/books" className="button">
+        <NavLink to="/collection/books" className="button">
           <button className="authButton">
             {isLoginScreen ? "login" : "register"}
           </button>
