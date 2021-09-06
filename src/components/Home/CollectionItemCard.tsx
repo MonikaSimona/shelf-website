@@ -1,8 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import { Comment } from "./ReviewDetails/CommentsOnReview";
 
 export interface CardData {
+  id: string;
   type?: string;
   imageSrc?: string;
   title: string;
@@ -10,10 +12,11 @@ export interface CardData {
   review: string;
   reviewer: string;
   date: string;
+  comments?: Comment[];
 }
 
 const CollectionItemCard = (props: CardData) => {
-  const { type, imageSrc, title, subtitle, review, reviewer, date } = props;
+  const { id, type, imageSrc, title, subtitle, review, reviewer, date } = props;
   return (
     <div
       className={`card ${
@@ -46,7 +49,7 @@ const CollectionItemCard = (props: CardData) => {
         </div>
       </div>
       <div className="cardDisscusionButton">
-        <NavLink className="disscusion" to="/disscusion">
+        <NavLink className="disscusion" to={`/collection/${type}/${id}`}>
           {" "}
           <Icon
             className="disscusionIcon"

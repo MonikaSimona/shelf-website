@@ -1,0 +1,61 @@
+.wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  top: 100px;
+  height: 75vh;
+  left: 20%;
+  right: 5%;
+  overflow: scroll;
+  .review {
+    display: flex;
+    gap: 5%;
+    height: 70%;
+    img {
+      width: 25%;
+      height: 100%;
+    }
+    .reviewBody {
+      font-family: "Nunito-400";
+      height: 100%;
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .reviewHeader {
+        .title {
+          font-size: 30px;
+          margin-bottom: 10px;
+        }
+        .subtitle {
+          color: $secondary;
+          font-size: 20px;
+        }
+      }
+
+      .reviewFooter {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        border-bottom: 1px solid $dark;
+        .reviewer {
+          margin-right: 20px;
+        }
+        .date {
+          display: flex;
+          align-items: center;
+        }
+        .colorbooks {
+          color: $books-accent;
+        }
+        .colormovies {
+          color: $movies-accent;
+        }
+        .colortvshows {
+          color: $tvshows-accent;
+        }
+      }
+    }
+  }
+}

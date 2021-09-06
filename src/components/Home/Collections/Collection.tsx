@@ -9,7 +9,8 @@ import Search from "../../Search/Search";
 import CollectionItemCard, { CardData } from "../CollectionItemCard";
 
 export interface Params {
-  type: string;
+  id: string;
+  type?: string;
 }
 const Collection = () => {
   const params: Params = useParams();
@@ -23,8 +24,11 @@ const Collection = () => {
   const data = useSelector((state: any) => state.reviewItems);
   const noSuchTerm = useSelector((state: HelperState) => state.noSuchTerm);
   useEffect(() => {
-    dispatch(getAllItems({ type }));
-    console.log("data", data);
+    console.log("PARAMS", params);
+    if (!params.hasOwnProperty("id")) {
+      dispatch(getAllItems({ type, id: "" }));
+      console.log("COLLECTION");
+    }
   }, [params]);
   return (
     <>
@@ -37,7 +41,7 @@ const Collection = () => {
               There are no reviews in this category. Be the first to review
               yourfavorite{" "}
               <span className="category">
-                {type.substring(0, type.length - 1)}
+                {type && type.substring(0, type.length - 1)}
               </span>
             </>
           )}
@@ -47,6 +51,7 @@ const Collection = () => {
           {data.length > 0 &&
             data.map((review: CardData, index: number) => (
               <CollectionItemCard
+                id={review.id}
                 key={index}
                 type={review.type}
                 imageSrc={review.imageSrc}

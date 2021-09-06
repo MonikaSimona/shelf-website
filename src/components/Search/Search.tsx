@@ -25,7 +25,7 @@ interface Props {
 export interface SearchValues {
   searchTerm: string;
   option: string;
-  type: string;
+  type?: string;
 }
 const searchInitialValues: SearchValues = {
   searchTerm: "",
@@ -47,7 +47,8 @@ const Search = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllItems({ type }));
+    dispatch(getAllItems({ type, id: "" }));
+    console.log("SEARCH");
   }, [params]);
   useEffect(() => {
     if (data.length === 0) {
@@ -72,6 +73,7 @@ const Search = () => {
             searchTerm: values.searchTerm,
             option: values.option || "title",
             type,
+            id: "",
           };
           console.log("search component", search);
           dispatch(filterItems(search));

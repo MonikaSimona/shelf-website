@@ -8,7 +8,7 @@ const Navbar = (props: Props) => {
   const location = useLocation();
   const currentKey = location.pathname.split("/")[2] || "/";
   useEffect(() => {
-    console.log("currentKey", currentKey);
+    // console.log("currentKey", currentKey);
   }, [location]);
   return (
     <div className="navbarWrapper">
